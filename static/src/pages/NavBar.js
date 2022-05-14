@@ -1,3 +1,7 @@
+import utils from "../utils/utils.js";
+
+const { $ } = utils.DOM;
+
 const Navbar = {
   async render() {
     return `
@@ -6,6 +10,11 @@ const Navbar = {
       <a href="/info" data-link>Info</a>
     </nav>
     `;
+  },
+  async after_render() {
+    $("nav").addEventListener("click", (e) => {
+      e.preventDefault();
+    });
   },
 };
 
