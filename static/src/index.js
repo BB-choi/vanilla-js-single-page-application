@@ -14,7 +14,7 @@ const getMainFromPath = () => {
   if (!routes[pathname]) {
     return NotFound;
   }
-  return routes[pathname];
+  return routes[pathname].node;
 };
 
 const MyDOM = {

@@ -1,16 +1,24 @@
 import { router } from "../routes/router.js";
+import routes from "../routes/routes.js";
 import utils from "../utils/utils.js";
 
 const { $ } = utils.DOM;
 
+const getNavItems = () => {
+  const routesArray = Object.entries(routes);
+  return routesArray.reduce(
+    (prev, [path, { routeName }]) =>
+      `${prev} <a href=${path} data-link>${routeName}</a>`,
+    ""
+  );
+};
+
 const Navbar = {
   async render() {
-    return `
-    <nav>
-      <a href="/" data-link>Home</a>
-      <a href="/info" data-link>Info</a>
-    </nav>
-    `;
+    const navItems = getNavItems();
+    const navbarTemplate = `<nav>${navItems}</nav>`;
+
+    return navbarTemplate;
   },
 
   async after_render(DOM) {

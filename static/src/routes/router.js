@@ -11,7 +11,7 @@ const router = async (pathName, DOM) => {
   if (!routes[location.pathname]) {
     DOM.main = NotFound;
   } else {
-    DOM.main = routes[pathName];
+    DOM.main = routes[pathName].node;
   }
 
   await DOM.render();
@@ -19,7 +19,7 @@ const router = async (pathName, DOM) => {
 
 const initRoutes = (DOM) => {
   onpopstate = async () => {
-    DOM.main = routes[location.pathname];
+    DOM.main = routes[location.pathname].node;
     await DOM.render();
   };
 };
