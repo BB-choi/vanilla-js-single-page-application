@@ -1,4 +1,4 @@
-import { router } from "../router.js";
+import { router } from "../routes/router.js";
 import utils from "../utils/utils.js";
 
 const { $ } = utils.DOM;

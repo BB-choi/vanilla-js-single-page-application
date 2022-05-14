@@ -1,13 +1,25 @@
 import utils from "./utils/utils.js";
+
+import routes from "./routes/routes.js";
+import { initRoutes } from "./routes/router.js";
+
 import NavBar from "./pages/NavBar.js";
-import Home from "./pages/Home.js";
-import { initRoutes } from "./router.js";
+import NotFound from "./pages/NotFound.js";
 
 const { $ } = utils.DOM;
 
+const getMainFromPath = () => {
+  const { pathname } = location;
+
+  if (!routes[pathname]) {
+    return NotFound;
+  }
+  return routes[pathname];
+};
+
 const MyDOM = {
   root: $("#root"),
-  main: Home,
+  main: getMainFromPath(),
   async render() {
     this.root.innerHTML = await NavBar.render();
     this.root.innerHTML += await this.main.render();

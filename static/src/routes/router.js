@@ -1,10 +1,5 @@
-import Home from "./pages/Home.js";
-import Info from "./pages/Info.js";
-
-const routes = {
-  "/": Home,
-  "/info": Info,
-};
+import NotFound from "../pages/NotFound.js";
+import routes from "./routes.js";
 
 const pushHistory = (pathName) => {
   history.pushState({}, pathName, location.origin + pathName);
@@ -13,7 +8,12 @@ const pushHistory = (pathName) => {
 const router = async (pathName, DOM) => {
   pushHistory(pathName);
 
-  DOM.main = routes[pathName];
+  if (!routes[location.pathname]) {
+    DOM.main = NotFound;
+  } else {
+    DOM.main = routes[pathName];
+  }
+
   await DOM.render();
 };
 
