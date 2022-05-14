@@ -2,7 +2,8 @@ const Navbar = {
   async render() {
     return `
     <nav>
-      Home | Info
+      <a href="/" data-link>Home</a>
+      <a href="/info" data-link>Info</a>
     </nav>
     `;
   },

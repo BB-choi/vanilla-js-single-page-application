@@ -1,5 +1,5 @@
-import Layout from "./pages/Layout.js";
 import utils from "./utils/utils.js";
+import Layout from "./pages/Layout.js";
 
 const { $ } = utils.DOM;
 
